@@ -18,7 +18,7 @@ public abstract class Person {
         this.name = name; // This will be updated by validation
     }
 
-    public String getID() {
+    public String getId() {
         return id;
     }
 

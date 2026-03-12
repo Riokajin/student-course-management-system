@@ -27,7 +27,7 @@ public class Student extends Person {
     @Override
     public String getDetails() {
         return "Student: " + getName() +
-               "\nID: " + getID() +
+               "\nID: " + getId() +
                "\nEmail: " + getEmail() +
                "\nProgram: " + program +
                "\nYear Level: " + yearLevel +
