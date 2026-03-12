@@ -30,7 +30,7 @@ public class Student extends Person {
                "\nID: " + getID() +
                "\nEmail: " + getEmail() +
                "\nProgram: " + program +
-               "\nYear Level: " + yearLevel;
+               "\nYear Level: " + yearLevel +
                "\nCourses: " + courses;
     }
 }
