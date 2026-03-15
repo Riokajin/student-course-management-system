@@ -39,17 +39,19 @@ public abstract class Person {
                 this.id = id;  // This will be updated by validation
             }
             else {
+                boolean idFound = false;
                 System.out.println("Error Setting ID: ID is improperly formatted. Format is: 'S-####'");
                 System.out.println("Attempting to format ID:");
-                Pattern idPattern = Pattern.compile("^\\d{4}$");
+                Pattern idPattern = Pattern.compile("\\d{4}");
                 Matcher matcher = idPattern.matcher(id);
-                if (matcher.find()) {
+                while (matcher.find()) {
                     System.out.println("Number String found for ID, Formatting:");
                     String validID = "S-" + matcher.group();
                     this.id = validID;
+                    idFound = true;
                 }
-                else {
-                    System.out.println("Could not format ID.");
+                if(idFound == false) {  
+                    System.out.println("Could not format ID");
                 }
             }
         }
