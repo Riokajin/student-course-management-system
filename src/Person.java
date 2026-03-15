@@ -15,7 +15,12 @@ public abstract class Person {
     }
 
     public void setName(String name) {
-        this.name = name; // This will be updated by validation
+        if (name.equals("") || name.equals(null)) {
+            System.out.println("Error Setting Name: Name must have a value.");
+        }
+        else {
+            this.name = name; // This will be updated by validation
+        }
     }
 
     public String getId() {
