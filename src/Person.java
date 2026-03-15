@@ -1,3 +1,6 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public abstract class Person {
     private String name;
     private String id;
@@ -37,6 +40,17 @@ public abstract class Person {
             }
             else {
                 System.out.println("Error Setting ID: ID is improperly formatted. Format is: 'S-####'");
+                System.out.println("Attempting to format ID:");
+                Pattern idPattern = Pattern.compile("^\\d{4}$");
+                Matcher matcher = idPattern.matcher(id);
+                if (matcher.find()) {
+                    System.out.println("Number String found for ID, Formatting:");
+                    String validID = "S-" + matcher.group();
+                    this.id = validID;
+                }
+                else {
+                    System.out.println("Could not format ID.");
+                }
             }
         }
     }
