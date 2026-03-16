@@ -6,7 +6,6 @@ public abstract class Person {
     private String id;
     private String email;
 
-
     public Person(String name, String id, String email) {
         setName(name);
         setId(id);
@@ -20,9 +19,8 @@ public abstract class Person {
     public void setName(String name) {
         if (name.trim().equals("") || name.trim().equals(null)) {
             System.out.println("Error Setting Name: Name must have a value.");
-        }
-        else {
-            this.name = name; // This will be updated by validation
+        } else {
+            this.name = name;
         }
     }
 
@@ -33,28 +31,30 @@ public abstract class Person {
     public void setId(String id) {
         if (id.trim().equals("") || id.trim().equals(null)) {
             System.out.println("Error Setting ID: ID must have a value.");
-        }
-        else {
-            if(id.matches("^S-\\d{4}$")) {
-                this.id = id;  // This will be updated by validation
+        } else {
+            int numberId;
+            boolean isValid = false;
+            Pattern idPattern = Pattern.compile("\\d+");
+            Matcher matcher = idPattern.matcher(id);
+            while (matcher.find()) {
+                isValid = true;
+            }
+            if (isValid) {
+                try {
+                    numberId = Integer.parseInt(id);
+                    System.out.println("Number String found for ID, Formatting:");
+                    String validID = "S-" + numberId;
+                    this.id = validID;
+
+                } catch (NumberFormatException e) {
+                    System.out.println("Error Setting ID: Input is not a number");
+                }
             }
             else {
-                boolean idFound = false;
-                System.out.println("Error Setting ID: ID is improperly formatted. Format is: 'S-####'");
-                System.out.println("Attempting to format ID:");
-                Pattern idPattern = Pattern.compile("\\d{4}");
-                Matcher matcher = idPattern.matcher(id);
-                while (matcher.find()) {
-                    System.out.println("Number String found for ID, Formatting:");
-                    String validID = "S-" + matcher.group();
-                    this.id = validID;
-                    idFound = true;
-                }
-                if(idFound == false) {  
-                    System.out.println("Could not format ID");
-                }
+                System.out.println("Error Setting ID: No number found.");
             }
         }
+
     }
 
     public String getEmail() {
@@ -64,12 +64,10 @@ public abstract class Person {
     public void setEmail(String email) {
         if (email.trim().equals("") || email.trim().equals(null)) {
             System.out.println("Error Setting Email: Email must have a value.");
-        }
-        else {
-            if(email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9+.-]+$")) {
-                this.email = email; // This will be updated by validation
-            }
-            else {
+        } else {
+            if (email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9+.-]+$")) {
+                this.email = email;
+            } else {
                 System.out.println("Error Setting Email: Email is improperly formatted. Format is: '___@___.___");
             }
         }
