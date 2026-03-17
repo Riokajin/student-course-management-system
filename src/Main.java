@@ -22,8 +22,11 @@ public class Main {
     System.out.println("-------------");
 
     ArrayList<Student> students = new ArrayList<>();
-   
+    
+    boolean exit = false;
 
+   while(exit == false){
+    
     System.out.println("what would you like to do?:");
     System.out.println("a) add");
     System.out.println("b) remove(by ID)");
@@ -37,13 +40,9 @@ public class Main {
     
     students.add((Student)p1);
 
-    boolean exit = false;
-
-    while(exit == false){
       //add
       if (userInput.equalsIgnoreCase("a") || (userInput.equalsIgnoreCase("add"))){ 
   
-
         System.out.println("whats the student name");
         String userName = scanner.nextLine();
         
@@ -67,6 +66,9 @@ public class Main {
           userYear);
         
         students.add((Student)p);
+
+        System.out.println("new student added");
+        continue;
       }
 
       //remove
@@ -83,15 +85,22 @@ public class Main {
           students.remove(students.get(i).getDetails());
           } 
         }
-
+        continue;
       }
 
       //display
       else if (userInput.equalsIgnoreCase("c") || (userInput.equalsIgnoreCase("display"))){
+        
+        for (int i = 0; i < students.size(); i++) {
+          
+          System.out.println(students.get(i).getDetails());
 
-        System.out.println(students);
-      }
+        } 
+        continue;
 
+        }
+        
+    
       //search
       else if (userInput.equalsIgnoreCase("d") || (userInput.equalsIgnoreCase("search"))){
         
@@ -105,10 +114,12 @@ public class Main {
             System.out.println(students.get(i).getDetails());
           } 
         }
+        continue;
       }
 
       //exit
       else if (userInput.equalsIgnoreCase("e") || (userInput.equalsIgnoreCase("exit"))){
+        System.out.println("bye bye");
         exit = true;
         System.exit(0);
 
