@@ -7,19 +7,27 @@ public class Instructor extends Person {
     }
 
     public void setDepartment(String department) {
-        if(department.trim() == null || department.trim().equals("")) {
+        if (department.trim() == null || department.trim().equals("")) {
             System.out.println("Error setting Department: Department cannot be empty.");
         }
         else {
-            this.department = department;
+            String departmentRegex = "^[A-Za-z0-9\\s]+$";
+            if (department.matches(departmentRegex)) {
+                this.department = department;
+                System.out.println("Department set successfully.");
+            }
+            else {
+                System.out.println(
+                        "Error setting Department: Department name contains invalid characters (only use letters, numbers, and spaces)");
+            }
         }
     }
 
     @Override
     public String getDetails() {
         return "Instructor: " + getName() +
-               "\nID: " + getId() +
-               "\nEmail: " + getEmail() +
-               "\nDepartment: " + department;
+                "\nID: " + getId() +
+                "\nEmail: " + getEmail() +
+                "\nDepartment: " + department;
     }
 }
