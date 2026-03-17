@@ -35,86 +35,88 @@ public class Main {
 
     String userInput = scanner.nextLine().toLowerCase();
     
-    students.add(p1.getDetails());
+    students.add((Student)p1);
 
     boolean exit = false;
-while(exit == false){
-    //add
-    if (userInput.equalsIgnoreCase("a") || (userInput.equalsIgnoreCase("add"))){ 
- 
 
-      System.out.println("whats the student name");
-      String userName = scanner.nextLine();
-      
-      System.out.println("enter student ID");
-      String userId = scanner.nextLine();
-      
-      System.out.println("email");
-      String userEmail = scanner.nextLine();
+    while(exit == false){
+      //add
+      if (userInput.equalsIgnoreCase("a") || (userInput.equalsIgnoreCase("add"))){ 
+  
 
-      System.out.println("program ");
-      String userProgram = scanner.nextLine();
-      
-      System.out.println("year");
-      int userYear = scanner.nextInt();
-      
-      Person p = new Student(
-        userName, 
-        userId, 
-        userEmail, 
-        userProgram, 
-        userYear);
-      
-    }
+        System.out.println("whats the student name");
+        String userName = scanner.nextLine();
+        
+        System.out.println("enter student ID");
+        String userId = scanner.nextLine();
+        
+        System.out.println("email");
+        String userEmail = scanner.nextLine();
 
-    //remove
-    else if (userInput.equalsIgnoreCase("b") || (userInput.equalsIgnoreCase("remove"))){
-      
-      System.out.println("please input ID of student you would like to remove");
-      
-      String userRemove = scanner.nextLine();
-
-      for (int i = 0; i < students.size(); i++) {
-         
-        if(userRemove.equalsIgnoreCase(students.get(i).getId())){
-
-         students.remove(students.get(i).getDetails());
-        } 
+        System.out.println("program ");
+        String userProgram = scanner.nextLine();
+        
+        System.out.println("year");
+        int userYear = scanner.nextInt();
+        
+        Person p = new Student(
+          userName, 
+          userId, 
+          userEmail, 
+          userProgram, 
+          userYear);
+        
+        students.add((Student)p);
       }
 
-    }
+      //remove
+      else if (userInput.equalsIgnoreCase("b") || (userInput.equalsIgnoreCase("remove"))){
+        
+        System.out.println("please input ID of student you would like to remove");
+        
+        String userRemove = scanner.nextLine();
 
-    //display
-    else if (userInput.equalsIgnoreCase("c") || (userInput.equalsIgnoreCase("display"))){
+        for (int i = 0; i < students.size(); i++) {
+          
+          if(userRemove.equalsIgnoreCase(students.get(i).getId())){
 
-      System.out.println(students);
-    }
+          students.remove(students.get(i).getDetails());
+          } 
+        }
 
-    //search
-    else if (userInput.equalsIgnoreCase("d") || (userInput.equalsIgnoreCase("search"))){
-      
-      System.out.println("please input name or ID of student you would like to search for");
-      String userSearch = scanner.nextLine().toLowerCase();
-      //checks if the search finds name or id
-      for (int i = 0; i < students.size(); i++) {
-         
-        if(userSearch.equalsIgnoreCase(students.get(i).getId()) || userSearch.equalsIgnoreCase(students.get(i).getName())){
+      }
 
-          System.out.println(students.get(i).getDetails());
-        } 
+      //display
+      else if (userInput.equalsIgnoreCase("c") || (userInput.equalsIgnoreCase("display"))){
+
+        System.out.println(students);
+      }
+
+      //search
+      else if (userInput.equalsIgnoreCase("d") || (userInput.equalsIgnoreCase("search"))){
+        
+        System.out.println("please input name or ID of student you would like to search for");
+        String userSearch = scanner.nextLine().toLowerCase();
+        //checks if the search finds name or id
+        for (int i = 0; i < students.size(); i++) {
+          
+          if(userSearch.equalsIgnoreCase(students.get(i).getId()) || userSearch.equalsIgnoreCase(students.get(i).getName())){
+
+            System.out.println(students.get(i).getDetails());
+          } 
+        }
+      }
+
+      //exit
+      else if (userInput.equalsIgnoreCase("e") || (userInput.equalsIgnoreCase("exit"))){
+        exit = true;
+        System.exit(0);
+
+      }
+
+      else{
+        System.out.println("please input proper option");
       }
     }
-
-    //exit
-    else if (userInput.equalsIgnoreCase("e") || (userInput.equalsIgnoreCase("exit"))){
-      exit = true;
-      System.exit(0);
-
-    }
-
-    else{
-      System.out.println("please input proper option");
-    }
-  }
   }
 }
