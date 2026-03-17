@@ -38,7 +38,24 @@ public class Student extends Person {
     }
 
     public void addCourse(String courseCode) {
-        courses.add(courseCode);
+        try {
+            if (courseCode.trim().equals(null) || courseCode.trim().equals("")) {
+                System.out.println("Error setting Course: Course cannot be empty.");
+            }
+            else {
+                String courseRegex = "^[A-Za-z0-9\\s]+$";
+                if (program.matches(courseRegex)) {
+                    courses.add(courseCode);
+                    System.out.println("Course successfully added.");
+                }
+                else {
+                    System.out.println("Error adding course: Program contains invalid characters (only use letters, numbers, and spaces)");
+                }
+            }
+        }
+        catch (NullPointerException e) {
+            System.out.println("Error added Course: Course cannot be null.");
+        }
     }
 
     public void removeCourse(String courseCode) {
