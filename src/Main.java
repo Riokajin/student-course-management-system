@@ -16,16 +16,129 @@ public class Main {
       1
     );
 
-    Person p2 = new Instructor(
-      "Dr. Smith",
-      "I-5678",
-      "smith@example.com",
-      "Mathematics"
-    );
 
     // Print details (method overriding)
     System.out.println(p1.getDetails());
     System.out.println("-------------");
-    System.out.println(p2.getDetails());
+
+    ArrayList<Student> students = new ArrayList<>();
+    
+    //sets exit to false for the while loop to fucntion up until the exit is set to true
+    boolean exit = false;
+
+    //adds student as test
+    students.add((Student)p1);
+
+
+   while(exit == false){
+    //menu for the user
+    System.out.println("what would you like to do?:");
+    System.out.println("a) add");
+    System.out.println("b) remove(by ID)");
+    System.out.println("c) display");
+    System.out.println("d) search(by ID or Name)");
+    System.out.println("e) exit");
+
+    Scanner scanner = new Scanner(System.in);
+
+    String userInput = scanner.nextLine().toLowerCase();
+    
+
+
+      //add
+      if (userInput.equalsIgnoreCase("a") || (userInput.equalsIgnoreCase("add"))){ 
+        //prompts the user to input info for the new student
+        System.out.println("whats the student name");
+        String userName = scanner.nextLine();
+        
+        System.out.println("enter student ID");
+        String userId = scanner.nextLine();
+        
+        System.out.println("email");
+        String userEmail = scanner.nextLine();
+
+        System.out.println("program ");
+        String userProgram = scanner.nextLine();
+        
+        System.out.println("year");
+
+        int userYear = Integer.parseInt(scanner.nextLine());
+        
+        //contains all new info in and new student
+        Person p = new Student(
+          userName, 
+          userId, 
+          userEmail, 
+          userProgram, 
+          userYear);
+        
+        //adds new student
+        students.add((Student)p);
+
+        System.out.println("new student added");
+        continue;
+      }
+
+      //removes the student if the correct id is input
+      else if (userInput.equalsIgnoreCase("b") || (userInput.equalsIgnoreCase("remove"))){
+        
+        System.out.println("please input ID of student you would like to remove");
+        
+        String userRemove = scanner.nextLine();
+
+        //iterates through the array
+        for (int i = 0; i < students.size(); i++) {
+          
+          if(userRemove.equalsIgnoreCase(students.get(i).getId())){
+
+          students.remove(i);
+          } 
+        }
+        continue;
+      }
+
+      //displays students in student array
+      else if (userInput.equalsIgnoreCase("c") || (userInput.equalsIgnoreCase("display"))){
+        
+        for (int i = 0; i < students.size(); i++) {
+          
+          System.out.println(students.get(i).getDetails());
+
+        } 
+        continue;
+
+        }
+        
+    
+      //search
+      else if (userInput.equalsIgnoreCase("d") || (userInput.equalsIgnoreCase("search"))){
+        
+        System.out.println("please input name or ID of student you would like to search for");
+        String userSearch = scanner.nextLine().toLowerCase();
+        //checks if the search finds name or id by iterating through the array
+        for (int i = 0; i < students.size(); i++) {
+          
+          if(userSearch.equalsIgnoreCase(students.get(i).getId()) || userSearch.equalsIgnoreCase(students.get(i).getName())){
+
+            System.out.println(students.get(i).getDetails());
+          } 
+        }
+        continue;
+      }
+
+      //exits out of the while loop
+      else if (userInput.equalsIgnoreCase("e") || (userInput.equalsIgnoreCase("exit"))){
+        System.out.println("bye bye");
+        exit = true;
+        System.exit(0);
+
+      }
+
+      //else for incase the input is wrong
+      else{
+        System.out.println("please input proper option");
+        continue;
+      }
+    }
   }
 }
