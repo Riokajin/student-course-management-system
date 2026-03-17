@@ -3,7 +3,16 @@ public class Instructor extends Person {
 
     public Instructor(String name, String id, String email, String department) {
         super(name, id, email);
-        this.department = department;
+        setDepartment(department);
+    }
+
+    public void setDepartment(String department) {
+        if(department.trim() == null || department.trim().equals("")) {
+            System.out.println("Error setting Department: Department cannot be empty.");
+        }
+        else {
+            this.department = department;
+        }
     }
 
     @Override
