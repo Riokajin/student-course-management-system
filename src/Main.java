@@ -41,11 +41,15 @@ public class Main {
     Scanner scanner = new Scanner(System.in);
 
     String userInput = scanner.nextLine().toLowerCase();
-
+    
+    
     //add
     if (userInput.equalsIgnoreCase("a") || (userInput.equalsIgnoreCase("add"))){ 
-     
       students.add(p1.getDetails());
+      System.out.println("whats the student name");
+      String userName = scanner.nextLine();
+            System.out.println("whats the student name");
+      String userName = scanner.nextLine();
     }
 
     //remove
@@ -83,9 +87,8 @@ public class Main {
          
         if(userSearch.equalsIgnoreCase(students.get(i))){
 
-          System.out.println();
+          System.out.println(students.get(i));
         } 
-        
       }
     }
 
@@ -96,5 +99,8 @@ public class Main {
 
     }
 
+    else{
+      System.out.println("please input proper option");
+    }
   }
 }
