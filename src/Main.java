@@ -21,7 +21,7 @@ public class Main {
     System.out.println(p1.getDetails());
     System.out.println("-------------");
 
-    ArrayList<String> students = new ArrayList<>();
+    ArrayList<Student> students = new ArrayList<>();
    
 
     System.out.println("what would you like to do?:");
@@ -35,10 +35,13 @@ public class Main {
 
     String userInput = scanner.nextLine().toLowerCase();
     
-    
+    students.add(p1.getDetails());
+
+    boolean exit = false;
+while(exit == false){
     //add
     if (userInput.equalsIgnoreCase("a") || (userInput.equalsIgnoreCase("add"))){ 
-      students.add(p1.getDetails());
+ 
 
       System.out.println("whats the student name");
       String userName = scanner.nextLine();
@@ -61,6 +64,7 @@ public class Main {
         userEmail, 
         userProgram, 
         userYear);
+      
     }
 
     //remove
@@ -72,11 +76,10 @@ public class Main {
 
       for (int i = 0; i < students.size(); i++) {
          
-        if(userRemove.equalsIgnoreCase(students.get(i))){
+        if(userRemove.equalsIgnoreCase(students.get(i).getId())){
 
-          students.remove(i);
-        }
-        
+         students.remove(students.get(i).getDetails());
+        } 
       }
 
     }
@@ -93,19 +96,18 @@ public class Main {
       System.out.println("please input name or ID of student you would like to search for");
       String userSearch = scanner.nextLine().toLowerCase();
       //checks if the search finds name or id
-      
       for (int i = 0; i < students.size(); i++) {
          
-        if(userSearch.equalsIgnoreCase(students.get(i))){
+        if(userSearch.equalsIgnoreCase(students.get(i).getId()) || userSearch.equalsIgnoreCase(students.get(i).getName())){
 
-          System.out.println(students.get(i));
+          System.out.println(students.get(i).getDetails());
         } 
       }
     }
 
     //exit
     else if (userInput.equalsIgnoreCase("e") || (userInput.equalsIgnoreCase("exit"))){
-
+      exit = true;
       System.exit(0);
 
     }
@@ -113,5 +115,6 @@ public class Main {
     else{
       System.out.println("please input proper option");
     }
+  }
   }
 }
