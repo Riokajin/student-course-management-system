@@ -7,13 +7,55 @@ public class Student extends Person {
 
     public Student(String name, String id, String email, String program, int yearLevel) {
         super(name, id, email);
-        this.program = program;
-        this.yearLevel = yearLevel;
+        setProgram(program);
+        setYearLevel(yearLevel);
         this.courses = new ArrayList<>();
+    }
+    
+    public void setProgram(String program) {
+        try {
+            if (program.trim().equals(null) || program.trim().equals("")) {
+                System.out.println("Error setting Program: Program cannot be empty.");
+            }
+            else {
+                String programRegex = "^[A-Za-z0-9\\s]+$";
+                if (program.matches(programRegex)) {
+                    this.program = program;
+                    System.out.println("Program successfully set.");
+                }
+                else {
+                    System.out.println("Error setting program: Program contains invalid characters (only use letters, numbers, and spaces)");
+                }
+            }
+        }
+        catch (NullPointerException e) {
+            System.out.println("Error setting Program: Program cannot be empty.");
+        }
+    }
+
+    public void setYearLevel(int yearLevel) {
+        this.yearLevel = yearLevel;
     }
 
     public void addCourse(String courseCode) {
-        courses.add(courseCode);
+        try {
+            if (courseCode.trim().equals(null) || courseCode.trim().equals("")) {
+                System.out.println("Error setting Course: Course cannot be empty.");
+            }
+            else {
+                String courseRegex = "^[A-Za-z0-9\\s]+$";
+                if (program.matches(courseRegex)) {
+                    courses.add(courseCode);
+                    System.out.println("Course successfully added.");
+                }
+                else {
+                    System.out.println("Error adding course: Program contains invalid characters (only use letters, numbers, and spaces)");
+                }
+            }
+        }
+        catch (NullPointerException e) {
+            System.out.println("Error added Course: Course cannot be null.");
+        }
     }
 
     public void removeCourse(String courseCode) {
