@@ -91,7 +91,6 @@ public abstract class Person {
         catch (NullPointerException e) {
             System.out.println("Error Setting Email: Email must have a value.");
         }
-
     }
 
     public abstract String getDetails();
