@@ -21,12 +21,15 @@ public class Main {
 
     ArrayList<Student> students = new ArrayList<>();
     
+    //sets exit to false for the while loop to fucntion up until the exit is set to true
     boolean exit = false;
 
+    //adds student as test
     students.add((Student)p1);
 
+
    while(exit == false){
-    
+    //menu for the user
     System.out.println("what would you like to do?:");
     System.out.println("a) add");
     System.out.println("b) remove(by ID)");
@@ -42,7 +45,7 @@ public class Main {
 
       //add
       if (userInput.equalsIgnoreCase("a") || (userInput.equalsIgnoreCase("add"))){ 
-  
+        //prompts the user to input info for the new student
         System.out.println("whats the student name");
         String userName = scanner.nextLine();
         
@@ -59,6 +62,7 @@ public class Main {
 
         int userYear = Integer.parseInt(scanner.nextLine());
         
+        //contains all new info in and new student
         Person p = new Student(
           userName, 
           userId, 
@@ -66,19 +70,21 @@ public class Main {
           userProgram, 
           userYear);
         
+        //adds new student
         students.add((Student)p);
 
         System.out.println("new student added");
         continue;
       }
 
-      //remove
+      //removes the student if the correct id is input
       else if (userInput.equalsIgnoreCase("b") || (userInput.equalsIgnoreCase("remove"))){
         
         System.out.println("please input ID of student you would like to remove");
         
         String userRemove = scanner.nextLine();
 
+        //iterates through the array
         for (int i = 0; i < students.size(); i++) {
           
           if(userRemove.equalsIgnoreCase(students.get(i).getId())){
@@ -89,7 +95,7 @@ public class Main {
         continue;
       }
 
-      //display
+      //displays students in student array
       else if (userInput.equalsIgnoreCase("c") || (userInput.equalsIgnoreCase("display"))){
         
         for (int i = 0; i < students.size(); i++) {
@@ -107,7 +113,7 @@ public class Main {
         
         System.out.println("please input name or ID of student you would like to search for");
         String userSearch = scanner.nextLine().toLowerCase();
-        //checks if the search finds name or id
+        //checks if the search finds name or id by iterating through the array
         for (int i = 0; i < students.size(); i++) {
           
           if(userSearch.equalsIgnoreCase(students.get(i).getId()) || userSearch.equalsIgnoreCase(students.get(i).getName())){
@@ -118,7 +124,7 @@ public class Main {
         continue;
       }
 
-      //exit
+      //exits out of the while loop
       else if (userInput.equalsIgnoreCase("e") || (userInput.equalsIgnoreCase("exit"))){
         System.out.println("bye bye");
         exit = true;
@@ -126,8 +132,10 @@ public class Main {
 
       }
 
+      //else for incase the input is wrong
       else{
         System.out.println("please input proper option");
+        continue;
       }
     }
   }
