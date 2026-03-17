@@ -1,7 +1,9 @@
-import java.util.ArrayList;
-import java.util.Scanner;
-
-
+/* 
+  Cameron Reflection: I did most of the error detection and prevention in the program,
+  and I learned of more situations where a try catch block is useful, such as when trying
+  to perform an action on something that might be null. This assignment also was going for
+  learning to work off my peers code.
+*/
 
 public class Main {
   public static void main(String[] args) {
