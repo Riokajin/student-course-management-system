@@ -1,6 +1,8 @@
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.jar.Attributes;
 
 
 public class Main {
@@ -40,27 +42,58 @@ public class Main {
 
     String userInput = scanner.nextLine().toLowerCase();
 
-    if (userInput == "a" || userInput == "add") {
-      //add
-       students.add(p1.getDetails());
+    //add
+    if (userInput.equalsIgnoreCase("a") || (userInput.equalsIgnoreCase("add"))){ 
+     
+      students.add(p1.getDetails());
     }
-    else if (userInput == "b" || userInput == "remove"){
-      //remove
+
+    //remove
+    else if (userInput.equalsIgnoreCase("b") || (userInput.equalsIgnoreCase("remove"))){
+      
+      System.out.println("please input ID of student you would like to remove");
+      
+      String userRemove = scanner.nextLine();
+
+      for (int i = 0; i < students.size(); i++) {
+         
+        if(userRemove.equalsIgnoreCase(students.get(i))){
+
+          students.remove(i);
+        }
+        
+      }
+
     }
-    else if (userInput == "c" || userInput == "display"){
-      //display
+
+    //display
+    else if (userInput.equalsIgnoreCase("c") || (userInput.equalsIgnoreCase("display"))){
+
       System.out.println(students);
     }
-    else if (userInput == "d" || userInput == "search"){
-      //search
 
-    }
-    else if (userInput == "e" || userInput == "exit"){
-       //exit
+    //search
+    else if (userInput.equalsIgnoreCase("d") || (userInput.equalsIgnoreCase("search"))){
+      
+      System.out.println("please input name or ID of student you would like to search for");
+      String userSearch = scanner.nextLine().toLowerCase();
+      //checks if the search finds name or id
+      
+      for (int i = 0; i < students.size(); i++) {
+         
+        if(userSearch.equalsIgnoreCase(students.get(i))){
 
+          System.out.println();
+        } 
+        
+      }
     }
-    else{
-        System.out.println("please try a new input");
+
+    //exit
+    else if (userInput.equalsIgnoreCase("e") || (userInput.equalsIgnoreCase("exit"))){
+
+      System.exit(0);
+
     }
 
   }
