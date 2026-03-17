@@ -17,11 +17,18 @@ public abstract class Person {
     }
 
     public void setName(String name) {
-        if (name.trim().equals("") || name.trim().equals(null)) {
-            System.out.println("Error Setting Name: Name must have a value.");
-        } else {
-            this.name = name;
+        try {
+            if (name.trim().equals("") || name.trim().equals(null)) {
+                System.out.println("Error Setting Name: Name must have a value.");
+            }
+            else {
+                this.name = name;
+            }
         }
+        catch (NullPointerException e) {
+            System.out.println("Error Setting Name: Name must have a value.");
+        }
+        
     }
 
     public String getId() {
@@ -29,32 +36,40 @@ public abstract class Person {
     }
 
     public void setId(String id) {
-        if (id.trim().equals("") || id.trim().equals(null)) {
-            System.out.println("Error Setting ID: ID must have a value.");
-        } else {
-            int numberId;
-            boolean isValid = false;
-            Pattern idPattern = Pattern.compile("\\d+");
-            Matcher matcher = idPattern.matcher(id);
-            while (matcher.find()) {
-                isValid = true;
-            }
-            if (isValid) {
-                try {
-                    numberId = Integer.parseInt(id);
-                    System.out.println("Number String found for ID, Formatting:");
-                    String validID = "S-" + numberId;
-                    this.id = validID;
-
-                } catch (NumberFormatException e) {
-                    System.out.println("Error Setting ID: Input is not a number");
-                }
+        try {
+            if (id.trim().equals("") || id.trim().equals(null)) {
+                System.out.println("Error Setting ID: ID must have a value.");
             }
             else {
-                System.out.println("Error Setting ID: No number found.");
+                int numberId;
+                boolean isValid = false;
+                String numbers = "";
+                Pattern idPattern = Pattern.compile("\\d+");
+                Matcher matcher = idPattern.matcher(id);
+                while (matcher.find()) {
+                    isValid = true;
+                    numbers = matcher.group();
+                }
+                if (isValid) {
+                    try {
+                        numberId = Integer.parseInt(numbers);
+                        System.out.println("Number String found for ID, Formatting:");
+                        String validID = "S-" + numberId;
+                        this.id = validID;
+
+                    }
+                    catch (NumberFormatException e) {
+                        System.out.println("Error Setting ID: Input is not a number");
+                    }
+                }
+                else {
+                    System.out.println("Error Setting ID: No number found.");
+                }
             }
         }
-
+        catch (NullPointerException e) {
+            System.out.println("Error Setting ID: ID must have a value.");
+        }
     }
 
     public String getEmail() {
@@ -62,14 +77,19 @@ public abstract class Person {
     }
 
     public void setEmail(String email) {
-        if (email.trim().equals("") || email.trim().equals(null)) {
-            System.out.println("Error Setting Email: Email must have a value.");
-        } else {
-            if (email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9+.-]+$")) {
-                this.email = email;
+        try {
+            if (email.trim().equals("") || email.trim().equals(null)) {
+                System.out.println("Error Setting Email: Email must have a value.");
             } else {
-                System.out.println("Error Setting Email: Email is improperly formatted. Format is: '___@___.___");
+                if (email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9+.-]+$")) {
+                    this.email = email;
+                } else {
+                    System.out.println("Error Setting Email: Email is improperly formatted. Format is: '___@___.___");
+                }
             }
+        }
+        catch (NullPointerException e) {
+            System.out.println("Error Setting Email: Email must have a value.");
         }
     }
 
