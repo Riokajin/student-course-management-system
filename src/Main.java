@@ -16,17 +16,10 @@ public class Main {
       1
     );
 
-    Person p2 = new Instructor(
-      "Dr. Smith",
-      "I-5678",
-      "smith@example.com",
-      "Mathematics"
-    );
 
     // Print details (method overriding)
     System.out.println(p1.getDetails());
     System.out.println("-------------");
-    System.out.println(p2.getDetails());
 
     ArrayList<String> students = new ArrayList<>();
    
@@ -46,10 +39,28 @@ public class Main {
     //add
     if (userInput.equalsIgnoreCase("a") || (userInput.equalsIgnoreCase("add"))){ 
       students.add(p1.getDetails());
+
       System.out.println("whats the student name");
       String userName = scanner.nextLine();
-            System.out.println("whats the student name");
-      String userName = scanner.nextLine();
+      
+      System.out.println("enter student ID");
+      String userId = scanner.nextLine();
+      
+      System.out.println("email");
+      String userEmail = scanner.nextLine();
+
+      System.out.println("program ");
+      String userProgram = scanner.nextLine();
+      
+      System.out.println("year");
+      int userYear = scanner.nextInt();
+      
+      Person p = new Student(
+        userName, 
+        userId, 
+        userEmail, 
+        userProgram, 
+        userYear);
     }
 
     //remove
