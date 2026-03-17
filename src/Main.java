@@ -1,8 +1,6 @@
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.jar.Attributes;
+
 
 
 public class Main {
@@ -24,7 +22,7 @@ public class Main {
     ArrayList<Student> students = new ArrayList<>();
     
     boolean exit = false;
-    
+
     students.add((Student)p1);
 
    while(exit == false){
@@ -58,7 +56,8 @@ public class Main {
         String userProgram = scanner.nextLine();
         
         System.out.println("year");
-        int userYear = scanner.nextInt();
+
+        int userYear = Integer.parseInt(scanner.nextLine());
         
         Person p = new Student(
           userName, 
@@ -84,7 +83,7 @@ public class Main {
           
           if(userRemove.equalsIgnoreCase(students.get(i).getId())){
 
-          students.remove(students.get(i).getDetails());
+          students.remove(i);
           } 
         }
         continue;
