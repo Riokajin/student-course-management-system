@@ -24,6 +24,8 @@ public class Main {
     ArrayList<Student> students = new ArrayList<>();
     
     boolean exit = false;
+    
+    students.add((Student)p1);
 
    while(exit == false){
     
@@ -38,7 +40,7 @@ public class Main {
 
     String userInput = scanner.nextLine().toLowerCase();
     
-    students.add((Student)p1);
+
 
       //add
       if (userInput.equalsIgnoreCase("a") || (userInput.equalsIgnoreCase("add"))){ 
