@@ -4,7 +4,13 @@
   to perform an action on something that might be null. This assignment also was going for
   learning to work off my peers code.
 */
-
+/* 
+  Adam Reflection: I worked mainly on the OOP structure for this project, 
+  making sure the classes were set up properly and fit together the way the assignment expected. 
+  I also spent time dealing with GitHub merges and conflicts, 
+  which helped me understand how group projects can get messy if things aren’t kept organized. 
+  Overall, I learned more about building a program using inheritance and how to manage shared code with a team.
+*/
 public class Main {
   public static void main(String[] args) {
     // Polymophism demonstration
