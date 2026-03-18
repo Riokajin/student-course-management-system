@@ -11,6 +11,13 @@
   which helped me understand how group projects can get messy if things aren’t kept organized. 
   Overall, I learned more about building a program using inheritance and how to manage shared code with a team.
 */
+/* 
+  Valentine Reflection: what the team learned: we learn adaptive communication of ideas in order to make the code work better then before
+how team collaborated: we all were on call doing the final screech in order to make sure all was right and done properly
+challenges faced: errors that needed trial and error to figure out
+how problems where solved: trial and error was was done together to figure out all options
+what could be improved: nothing that i can think of, the team was organized, resourceful and adaptive to challenges
+*/
 public class Main {
   public static void main(String[] args) {
     // Polymophism demonstration
